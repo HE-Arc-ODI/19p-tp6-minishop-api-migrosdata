@@ -4,6 +4,8 @@
 
 package ch.hearc.ig.odi.minishop.restresources;
 
+import ch.hearc.ig.odi.minishop.services.PersistenceService;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,5 +16,7 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 public class CustomerResource {
 
+  @Inject
+  private PersistenceService persistenceService;
 }
 
