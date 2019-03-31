@@ -6,6 +6,8 @@ package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Customer;
 import ch.hearc.ig.odi.minishop.exception.CustomerException;
+import ch.hearc.ig.odi.minishop.exception.NotFoundException;
+import ch.hearc.ig.odi.minishop.exception.StoreException;
 import ch.hearc.ig.odi.minishop.services.PersistenceService;
 import java.util.List;
 import javax.inject.Inject;
@@ -32,7 +34,12 @@ public class CustomerResource {
   @GET
   @Path("{id}")
   public Customer getCustomer(@PathParam("id") Long customerId) throws CustomerException {
-    return persistenceService.getCustomerByID(customerId);
+    try {
+      return persistenceService.getCustomerByID(customerId);
+    } catch (CustomerException e) {
+      e.printStackTrace();
+      throw new NotFoundException("the cart does not exist");
+    }
   }
 }
 
