@@ -36,7 +36,7 @@ public class CustomerResource {
 
   @GET
   @Path("{id}")
-  public Customer getCustomer(@PathParam("id") Long customerId) throws CustomerException {
+  public Customer getCustomer(@PathParam("id") Long customerId) {
     try {
       return persistenceService.getCustomerByID(customerId);
     } catch (CustomerException e) {
